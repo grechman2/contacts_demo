@@ -1,3 +1,5 @@
+![Java CI with Maven](https://github.com/grechman2/contacts_demo/workflows/Java%20CI%20with%20Maven/badge.svg)
+
 **Demo contacts spring boot 2 application**
 
 You need to have a docker and docker-composed to be installed on your pc.
