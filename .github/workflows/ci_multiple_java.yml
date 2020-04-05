@@ -1,7 +1,7 @@
 name: Java CI with Maven And multiple java versions
 
 on:
-  push:
+  push1:
     branches: [ master ]
 
 jobs:
