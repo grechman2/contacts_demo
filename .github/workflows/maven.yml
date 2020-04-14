@@ -19,7 +19,7 @@ jobs:
     - name: Run Tests
       run: mvn -B test --file pom.xml
  
-  build and publish to GitHub Packages Apache Maven:
+  build:
    runs-on: ubuntu-latest
    needs: [test]
    steps:
