@@ -49,6 +49,6 @@ jobs:
         GITHUB_TOKEN: ${{ github.token }}
         
     - name: Build and publish docker image to GitHub Packages Docker registry
-      run: mvn -Dmaven.test.skip=true -Drevision=$BUILD_NUMBER -Ddocker -Ddocker.registry=docker.pkg.github.com/grechman2/contacts_demo -Ddocker.username=$GITHUB_ACTOR -Ddocker.password=$REPO_TOKEN --file pom.xml package docker:build docker:push
+      run: mvn -Dmaven.test.skip=true -Drevision=$BUILD_NUMBER -Ddocker -Ddocker.username=$GITHUB_ACTOR -Ddocker.password=$REPO_TOKEN --file pom.xml package docker:build docker:push
       env:
         REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
