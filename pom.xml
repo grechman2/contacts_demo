@@ -47,7 +47,7 @@
                                 <image>
                                     <name>docker.pkg.github.com/grechman2/contacts_demo/${project.artifactId}:${project.version}</name>
                                     <build>
-                                        <from>java:8-jdk-alpine</from>
+                                        <from>jimschubert/8-jdk-alpine-mvn</from>
                                         <entryPoint>
                                             <exec>
                                                 <args>java</args>
