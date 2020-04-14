@@ -47,3 +47,8 @@ jobs:
       run: mvn deploy -Drevision=$BUILD_NUMBER -Dmaven.test.skip=true -s $GITHUB_WORKSPACE/settings.xml
       env:
         GITHUB_TOKEN: ${{ github.token }}
+        
+    - name: Build and publish docker image to GitHub Packages Docker registry
+      run: mvn -B package -Dmaven.test.skip=true -Drevision=$BUILD_NUMBER -Ddocker.username=$GITHUB_ACTOR -Ddocker.password=$REPO_TOKEN --file pom.xml
+      env:
+        REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
