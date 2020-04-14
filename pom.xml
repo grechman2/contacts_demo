@@ -10,13 +10,21 @@
     </parent>
     <groupId>org.grechman</groupId>
     <artifactId>contacts_storage</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}</version>
     <name>contacts_storage</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id> <!-- this id must be equal to id in ~/.m2/settings.xml file! -->
+            <name>GitHub grechman2 Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/grechman2/contacts_demo</url>
+        </repository>
+    </distributionManagement>
 
     <profiles>
         <profile>
@@ -31,13 +39,14 @@
                     <plugin>
                         <groupId>io.fabric8</groupId>
                         <artifactId>docker-maven-plugin</artifactId>
-                        <version>0.26.0</version>
+                        <version>0.33.0</version>
                         <extensions>true</extensions>
                         <configuration>
                             <verbose>true</verbose>
+                            <registry>docker.pkg.github.com/grechman2/contacts_demo</registry>
                             <images>
                                 <image>
-                                    <name>${project.artifactId}</name>
+                                    <name>${project.artifactId}:${project.version}</name>
                                     <build>
                                         <from>java:8-jdk-alpine</from>
                                         <entryPoint>
@@ -54,15 +63,6 @@
                                 </image>
                             </images>
                         </configuration>
-                        <executions>
-                            <execution>
-                                <id>build</id>
-                                <phase>post-integration-test</phase>
-                                <goals>
-                                    <goal>build</goal>
-                                </goals>
-                            </execution>
-                        </executions>
                     </plugin>
                 </plugins>
             </build>
